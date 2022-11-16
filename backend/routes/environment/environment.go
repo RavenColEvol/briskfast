@@ -7,9 +7,11 @@ type Environment struct{}
 func Routes(route *gin.Engine) {
 	router := route.Group("/environment")
 
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "environment",
-		})
-	})
+	router.POST("/", func(c *gin.Context) {})
+
+	router.PUT("/:env_uid", func(c *gin.Context) {})
+
+	router.GET("/:env_uid", func(c *gin.Context) {})
+
+	router.DELETE("/:env_uid", func(c *gin.Context) {})
 }
