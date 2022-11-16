@@ -1,20 +1,20 @@
 package main
 
 import (
+	"github.com/RavenColEvol/briskfast/routes/environment"
 	"github.com/RavenColEvol/briskfast/routes/organization"
+	"github.com/RavenColEvol/briskfast/routes/test_case"
+	"github.com/RavenColEvol/briskfast/routes/test_suites"
 	"github.com/gin-gonic/gin"
-	"gorm.io/driver/sqlite"
-	"gorm.io/gorm"
 )
 
 func main() {
-	_, err := gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{})
-	if err != nil {
-		panic("failed to connect database")
-	}
-
 	router := gin.Default()
+
 	organization.Routes(router)
+	environment.Routes(router)
+	test_case.Routes(router)
+	test_suites.Routes(router)
 
 	router.Run()
 }
